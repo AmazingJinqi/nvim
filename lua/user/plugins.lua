@@ -43,13 +43,13 @@ return packer.startup(function(use)
     -- This plugin provides the icons as well as colors for each icon.
     use {
         'nvim-tree/nvim-web-devicons',
-        config = function() require('user.plugins.nvim-web-devicons') end
+        config = function() require('user.plugins.devicons') end
     }
 
     -- A blazing fast and easy to configure Neovim statusline written in Lua.
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
+        requires = { 'nvim-tree/nvim-web-devicons' },
         config = function() require('user.plugins.lualine') end
     }
 
@@ -63,7 +63,7 @@ return packer.startup(function(use)
     use {
         'akinsho/bufferline.nvim',
         tag = "v3.*",
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
         config = function() require('user.plugins.bufferline') end
     }
 
@@ -112,7 +112,7 @@ return packer.startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         requires = 'p00f/nvim-ts-rainbow',
-        config = function() require('user.plugins.nvim-treesitter') end,
+        config = function() require('user.plugins.treesitter') end,
         run = ':TSUpdate',
     }
 
