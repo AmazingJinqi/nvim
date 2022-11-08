@@ -17,7 +17,10 @@ whichkey.setup {
     popup_mappings = {
         scroll_down = '<C-j>',
         scroll_up = '<C-k>',
-    }
+    },
+    disable = {
+        filetypes = { 'NvimTree' },
+    },
 }
 
 whichkey.register({
