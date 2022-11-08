@@ -63,7 +63,10 @@ return packer.startup(function(use)
     use {
         'akinsho/bufferline.nvim',
         tag = "v3.*",
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+        requires = {
+            'nvim-tree/nvim-web-devicons',
+            'moll/vim-bbye',
+        },
         config = function() require('user.plugins.bufferline') end
     }
 
