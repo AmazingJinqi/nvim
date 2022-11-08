@@ -12,12 +12,12 @@ end
 
 mason.setup {
     ui = {
-		border = "rounded",
-		icons = {
+        border = "rounded",
+        icons = {
             package_installed = "✓",
             package_pending = "➜",
             package_uninstalled = "✗"
-		},
+        },
         keymaps = {
             -- Keymap to expand a package
             toggle_package_expand = "<CR>",
@@ -38,11 +38,11 @@ mason.setup {
             -- Keymap to apply language filter
             apply_language_filter = "<C-f>",
         },
-	},
+    },
     -- Controls to which degree logs are written to the log file.
-	log_level = vim.log.levels.INFO,
+    log_level = vim.log.levels.INFO,
     -- Limit for the maximum amount of packages to be installed at the same time.
-	max_concurrent_installers = 4,
+    max_concurrent_installers = 4,
 }
 
 local servers = {
@@ -57,7 +57,7 @@ local servers = {
 
 masonconfig.setup {
     ensure_installed = servers,
-	automatic_installation = true,
+    automatic_installation = true,
 }
 
 local lspconfig_status_ok, lspconfig = pcall(require, 'lspconfig')
