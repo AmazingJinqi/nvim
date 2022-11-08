@@ -1,11 +1,13 @@
 local ensure_packer = function()
-    local fn = vim.fn local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
     if fn.empty(fn.glob(install_path)) > 0 then
-        fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
         vim.cmd [[packadd packer.nvim]]
         return true
     end
-    return false end
+    return false
+end
 
 -- Autocommand that reloads neovim
 vim.cmd([[
@@ -18,16 +20,16 @@ vim.cmd([[
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-	return
+    return
 end
 
 -- Have packer use a popup window
 packer.init {
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
+    display = {
+        open_fn = function()
+            return require("packer.util").float({ border = "rounded" })
+        end,
+    },
 }
 
 return packer.startup(function(use)
@@ -47,7 +49,7 @@ return packer.startup(function(use)
     -- A blazing fast and easy to configure Neovim statusline written in Lua.
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons'},
+        requires = { 'kyazdani42/nvim-web-devicons' },
         config = function() require('user.plugins.lualine') end
     }
 
@@ -84,14 +86,14 @@ return packer.startup(function(use)
 
     -- A super powerful autopair plugin for Neovim that supports multiple characters.
     use {
-	    "windwp/nvim-autopairs",
+        "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup() end
     }
 
     -- Surround selections
     use {
         "kylechui/nvim-surround",
-        config = function() require("nvim-surround").setup()end
+        config = function() require("nvim-surround").setup() end
     }
 
     -- Ranger is a console file manager with VI key bindings.
@@ -143,6 +145,14 @@ return packer.startup(function(use)
             'williamboman/mason-lspconfig.nvim'
         },
         config = function() require("user.lsp") end,
+    }
+
+    -- Telescope: Gaze deeply into unknown regions using the power of the moon.
+    use {
+        'nvim-telescope/telescope.nvim',
+        tag = '0.1.0',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function() require('user.plugins.telescope') end,
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
