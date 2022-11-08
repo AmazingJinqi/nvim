@@ -164,6 +164,15 @@ return packer.startup(function(use)
         config = function() require('user.plugins.gitsigns') end,
     }
 
+    -- A File Explorer For Neovim Written In Lua.
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        config = function() require('user.plugins.nvim-tree') end,
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if ensure_packer() then
