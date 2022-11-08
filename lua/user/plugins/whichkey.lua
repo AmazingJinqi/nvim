@@ -23,4 +23,9 @@ whichkey.setup {
 whichkey.register({
     ['<leader>s'] = { name = 'Sneak' },
     ['<leader>t'] = { name = 'Toggle' },
+    ['<leader>f'] = { name = 'Telescope' },
+    ['<leader>ff'] = { name = 'File Pickers' },
+    ['<leader>fv'] = { name = 'Vim Pickers' },
+    ['<leader>fl'] = { name = 'LSP Pickers' },
+    ['<leader>fg'] = { name = 'Git Picker' },
 })
