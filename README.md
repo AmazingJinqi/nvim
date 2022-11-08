@@ -1,2 +1,2 @@
-# nvim
+# Neovim Configuration
 Dotfiles for neovim
