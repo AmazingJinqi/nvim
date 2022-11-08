@@ -69,7 +69,7 @@ return packer.startup(function(use)
 
     use {
         'numToStr/Comment.nvim',
-        config = function() require('Comment').setup() end
+        config = function() require('user.plugins.comment') end
     }
 
     -- WhichKey is a lua plugin that displays a popup with possible key bindings of the command you started typing.
@@ -111,7 +111,10 @@ return packer.startup(function(use)
     -- Treesitter configurations and abstraction layer for Neovim.
     use {
         'nvim-treesitter/nvim-treesitter',
-        requires = 'p00f/nvim-ts-rainbow',
+        requires = {
+            'p00f/nvim-ts-rainbow',
+            'JoosepAlviste/nvim-ts-context-commentstring',
+        },
         config = function() require('user.plugins.treesitter') end,
         run = ':TSUpdate',
     }
