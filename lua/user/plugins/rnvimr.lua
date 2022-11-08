@@ -21,4 +21,4 @@ g.rnvimr_enable_bw = 1
 -- Link CursorLine into RnvimrNormal highlight in the Floating window
 vim.api.nvim_set_hl(0, 'RnvimrNormal', { link = 'CursorLine' })
 
-vim.keymap.set('n', '<leader>tr', '<cmd>RnvimrToggle<cr>', { noremap = true, desc = 'Ranger Toggle' })
+vim.keymap.set('n', '<leader>tr', '<cmd>RnvimrToggle<cr>', { noremap = true, desc = 'Ranger toggle' })

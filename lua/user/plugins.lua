@@ -158,6 +158,12 @@ return packer.startup(function(use)
         config = function() require('user.plugins.telescope') end,
     }
 
+    -- Super fast git decorations implemented purely in lua/teal.
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function() require('user.plugins.gitsigns') end,
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if ensure_packer() then
