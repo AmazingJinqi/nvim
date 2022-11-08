@@ -1,4 +1,4 @@
-local status_ok, ranger = pcall(require, 'rnvimr')
+local status_ok, _ = pcall(require, 'rnvimr')
 
 if not status_ok then
     return

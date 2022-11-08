@@ -19,11 +19,11 @@ g['sneak#s_next'] = 1
 g['sneak#prompt'] = ' '
 
 -- 2-character Sneak
-map('', '<leader>ss', '<plug>Sneak_s', { noremap = true, desc = 'Go to the next {c}{c}'})
-map('', '<leader>sS', '<plug>Sneak_S', { noremap = true, desc = 'Go to the previous {c}{c}'})
+map('', '<leader>ss', '<plug>Sneak_s', { noremap = true, desc = 'Go to the next {c}{c}' })
+map('', '<leader>sS', '<plug>Sneak_S', { noremap = true, desc = 'Go to the previous {c}{c}' })
 
 -- 1-character Sneak
-map('', '<leader>sf', '<plug>Sneak_f', { noremap = true, desc = 'Go to the next {c}'})
-map('', '<leader>sF', '<plug>Sneak_F', { noremap = true, desc = 'Go to the previous {c}'})
-map('', '<leader>st', '<plug>Sneak_t', { noremap = true, desc = 'Go to the 1 char before next {c}'})
-map('', '<leader>sT', '<plug>Sneak_T', { noremap = true, desc = 'Go to the 1 char before previous {c}'})
+map('', '<leader>sf', '<plug>Sneak_f', { noremap = true, desc = 'Go to the next {c}' })
+map('', '<leader>sF', '<plug>Sneak_F', { noremap = true, desc = 'Go to the previous {c}' })
+map('', '<leader>st', '<plug>Sneak_t', { noremap = true, desc = 'Go to the 1 char before next {c}' })
+map('', '<leader>sT', '<plug>Sneak_T', { noremap = true, desc = 'Go to the 1 char before previous {c}' })

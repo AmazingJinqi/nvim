@@ -4,10 +4,8 @@ if not status_ok then
     return
 end
 
-whichkey.register(mappings, opts)
-
-local presets = require("which-key.plugins.presets")
-presets.operators["v"] = nil
+-- local presets = require("which-key.plugins.presets")
+-- presets.operators["v"] = nil
 
 whichkey.setup {
     plugins = {
@@ -17,7 +15,12 @@ whichkey.setup {
         }
     },
     popup_mappings = {
-        scroll_down = '<C-n>',
-        scroll_up = '<C-p>',
+        scroll_down = '<C-j>',
+        scroll_up = '<C-k>',
     }
 }
+
+whichkey.register({
+    ['<leader>s'] = { name = 'Sneak' },
+    ['<leader>t'] = { name = 'Toggle' },
+})
