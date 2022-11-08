@@ -87,7 +87,7 @@ return packer.startup(function(use)
     -- A super powerful autopair plugin for Neovim that supports multiple characters.
     use {
         "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup() end
+        config = function() require("user.plugins.autopairs") end
     }
 
     -- Surround selections
