@@ -23,10 +23,21 @@ nvim_tree.setup {
     },
     view = {
         adaptive_size = true,
+        mappings = {
+            list = {
+                { key = '<C-s>', action = 'split' },
+                { key = 'u', action = 'dir_up' },
+            }
+        },
     },
     renderer = {
         highlight_git = true,
-    }
+    },
+    actions = {
+        open_file = {
+            quit_on_open = true,
+        },
+    },
 }
 
 vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>', { noremap = true, desc = 'NvimTree toggle' })
