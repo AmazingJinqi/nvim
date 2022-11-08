@@ -1,0 +1,2 @@
+# nvim
+Dotfiles for neovim
