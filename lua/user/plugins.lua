@@ -181,6 +181,13 @@ return packer.startup(function(use)
         config = function() require('user.plugins.nvim-tree') end,
     }
 
+    -- A neovim plugin to persist and toggle multiple terminals during an editing session.
+    use {
+        "akinsho/toggleterm.nvim",
+        tag = '*',
+        config = function() require('user.plugins.toggleterm') end,
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if ensure_packer() then

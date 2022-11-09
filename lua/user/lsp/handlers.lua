@@ -86,6 +86,8 @@ local function lsp_keymaps(bufnr)
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]]
 
     map('n', '<leader>/', '<cmd>Format<cr>', bufopts('Format'))
+
+    vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 end
 
 M.on_attach = function(client, bufnr)

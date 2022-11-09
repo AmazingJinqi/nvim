@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 nvim_tree.setup {
-    disable_netrw = true,
+    disable_netrw = false,
     hijack_netrw = true,
     ignore_ft_on_setup = {
         "startify",
@@ -40,4 +40,4 @@ nvim_tree.setup {
     },
 }
 
-vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>', { noremap = true, desc = 'NvimTree toggle' })
+vim.keymap.set('n', '<leader>tn', '<cmd>NvimTreeToggle<cr>', { noremap = true, desc = 'Toggle NvimTree' })
