@@ -1,6 +1,5 @@
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
@@ -58,36 +57,60 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-    local function opts(s)
-        local opt = { noremap = true, desc = s }
+    local function bufopts(s)
+        local opt = { noremap = true, buffer = bufnr, desc = s }
         return opt
     end
 
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts('Go to declaration'))
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts('Go to definition'))
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts('LSP hover'))
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>",
-        opts('Go to implementation'))
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts('Show signature'))
+    local map = vim.keymap.set
+
+    map('n', '<leader>le', function() vim.diagnostic.open_float({ border = "rounded", scope = "line" }) end,
+        bufopts('Show diagnostics in the current line'))
+    map('n', '[d', function() vim.diagnostic.goto_prev({ border = "rounded" }) end, bufopts('Go to previous diagnostics'))
+    map('n', ']d', function() vim.diagnostic.goto_next({ border = "rounded" }) end, bufopts('Go to next diagnostics'))
+    map('n', '<leader>lq', vim.diagnostic.setloclist, bufopts('Add buffer diagnostics to the location list'))
+    map('n', 'gD', vim.lsp.buf.declaration, bufopts('Go to declaration'))
+    map('n', 'gd', vim.lsp.buf.definition, bufopts('Go to definition'))
+    map('n', 'K', vim.lsp.buf.hover, bufopts('LSP hover'))
+    map('n', 'gI', vim.lsp.buf.implementation, bufopts('Go to implementation'))
+    map('n', '<C-k>', vim.lsp.buf.signature_help, bufopts('Show signature'))
+    map('n', 'gr', vim.lsp.buf.references, bufopts('Go to references'))
+    map('n', '<leader>la', vim.lsp.buf.add_workspace_folder, bufopts('Add workspace folder'))
+    map('n', '<leader>lr', vim.lsp.buf.remove_workspace_folder, bufopts('Remove workspace folder'))
+    map('n', '<leader>ll', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+        bufopts('List workspace folders'))
+    map('n', '<leader>ld', vim.lsp.buf.type_definition, bufopts('Go to type definition'))
+    map('n', '<leader>ln', vim.lsp.buf.rename, bufopts('Rename'))
+    map('n', '<leader>lc', vim.lsp.buf.code_action, bufopts('Code actions'))
+
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts('Go to declaration'))
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts('Go to definition'))
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts('LSP hover'))
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>",
+    --     opts('Go to implementation'))
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts('Show signature'))
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts('Go to references'))
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts('Go to references'))
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
-        opts('Go to previous diagnostics'))
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gl",
-        '<cmd>lua vim.diagnostic.open_float({ border = "rounded", scope = "line" })<CR>',
-        opts('Show diagnostics in the current line'))
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
-        opts('Go to next diagnostics'))
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>",
-        opts('Add buffer diagnostics to the location list'))
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>',
+    --     opts('Go to previous diagnostics'))
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "gl",
+    --     '<cmd>lua vim.diagnostic.open_float({ border = "rounded", scope = "line" })<CR>',
+    --     opts('Show diagnostics in the current line'))
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>',
+    --     opts('Go to next diagnostics'))
+    -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>",
+    --     opts('Add buffer diagnostics to the location list'))
 
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]]
 
-    vim.keymap.set('n', '<leader>/', '<cmd>Format<cr>', opts('Format'))
+    map('n', '<leader>/', '<cmd>Format<cr>', bufopts('Format'))
 end
 
 M.on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
     -- if client.name == "tsserver" then
     --     client.server_capabilities.documentFormattingProvider = false
     -- end
