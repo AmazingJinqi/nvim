@@ -10,8 +10,6 @@ local schemas = {
     -- },
 }
 
-local extended_schemas = extend(schemas, default_schemas)
-
 local opts = {
   settings = {
     json = {

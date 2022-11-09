@@ -148,9 +148,14 @@ return packer.startup(function(use)
         'neovim/nvim-lspconfig',
         requires = {
             'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim'
+            'williamboman/mason-lspconfig.nvim',
+            'jose-elias-alvarez/null-ls.nvim',
+            'j-hui/fidget.nvim',
         },
-        config = function() require("user.lsp") end,
+        config = function()
+            require("user.lsp")
+            require("fidget").setup()
+        end,
     }
 
     -- Telescope: Gaze deeply into unknown regions using the power of the moon.
