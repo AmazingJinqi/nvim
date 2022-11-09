@@ -188,6 +188,12 @@ return packer.startup(function(use)
         config = function() require('user.plugins.toggleterm') end,
     }
 
+    -- Speed up loading Lua modules in Neovim to improve startup time.
+    use {
+        'lewis6991/impatient.nvim',
+        config = function() require('impatient').enable_profile() end,
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if ensure_packer() then
