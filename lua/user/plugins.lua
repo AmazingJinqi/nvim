@@ -208,12 +208,6 @@ return packer.startup(function(use)
         config = function() require('user.plugins.neoscroll') end,
     }
 
-    -- Cheatsheet for keymaps.
-    use {
-        'sudormrfbin/cheatsheet.nvim',
-        config = function() require('user.plugins.cheatsheet') end,
-    }
-
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if ensure_packer() then
