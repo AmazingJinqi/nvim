@@ -203,9 +203,17 @@ return packer.startup(function(use)
         config = function() require('impatient').enable_profile() end,
     }
 
+    -- Neoscroll: a smooth scrolling neovim plugin written in lua.
     use {
         'karb94/neoscroll.nvim',
         config = function() require('user.plugins.neoscroll') end,
+    }
+
+
+    -- alpha is a fast and fully programmable greeter for neovim.
+    use {
+        'goolord/alpha-nvim',
+        config = function() require('user.plugins.alpha') end,
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
