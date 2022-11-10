@@ -164,12 +164,11 @@ return packer.startup(function(use)
         tag = '0.1.0',
         requires = {
             'nvim-lua/plenary.nvim',
-            -- project.nvim is an all in one neovim plugin written in lua that provides superior project management.
-            'ahmedkhalf/project.nvim',
+            -- File browser extension.
+            'nvim-telescope/telescope-file-browser.nvim',
         },
         config = function()
             require('user.plugins.telescope')
-            require('project_nvim').setup()
         end,
     }
 
@@ -199,6 +198,11 @@ return packer.startup(function(use)
     use {
         'lewis6991/impatient.nvim',
         config = function() require('impatient').enable_profile() end,
+    }
+
+    use {
+        'karb94/neoscroll.nvim',
+        config = function() require('user.plugins.neoscroll') end,
     }
 
     -- Automatically set up your configuration after cloning packer.nvim

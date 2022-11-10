@@ -1,6 +1,5 @@
 local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-    return
+if not status_ok then return
 end
 
 local actions = require "telescope.actions"
@@ -93,7 +92,16 @@ telescope.setup {
             theme = 'cursor',
         },
     },
+    extensions = {
+        file_browser = {
+            theme = "ivy",
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+        },
+    },
 }
+
+require("telescope").load_extension("file_browser")
 
 local builtin = require('telescope.builtin')
 local map = vim.keymap.set
@@ -115,7 +123,7 @@ map('n', '<leader>ffg', builtin.git_files, opts('Git files'))
 map('n', '<leader>ffs', builtin.live_grep, opts('Strings'))
 map('n', '<leader>ffS', builtin.grep_string, opts('Strings under cursor'))
 
--- vim Pickers
+-- Vim Pickers
 map('n', '<leader>fvb', builtin.buffers, opts('Buffers'))
 map('n', '<leader>fva', builtin.autocommands, opts('Autocommands'))
 map('n', '<leader>fvc', builtin.commands, opts('Commands'))
@@ -164,8 +172,3 @@ map('n', '<leader>fgS', builtin.git_stash, opts('Stash items'))
 
 -- Treesitter Picker
 map('n', '<leader>ft', builtin.treesitter, opts('Treesitter'))
-
--- Projects.nvim extension
-telescope.load_extension('projects')
-
-map('n', '<leader>fp', '<cmd>Telescope projects<cr>', opts('Projects'))
