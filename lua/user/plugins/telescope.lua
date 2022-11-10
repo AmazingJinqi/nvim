@@ -103,10 +103,11 @@ local function opts(s)
     return opt
 end
 
-map('n', '<leader>fp', builtin.planets, opts('Planets'))
-map('n', '<leader>fb', builtin.builtin, opts('Built-in pickers'))
-map('n', '<leader>fr', builtin.reloader, opts('Lua modules'))
-map('n', '<leader>fs', builtin.symbols, opts('Symbols'))
+-- List Pickers
+map('n', '<leader>fnp', builtin.planets, opts('Planets'))
+map('n', '<leader>fnb', builtin.builtin, opts('Built-in pickers'))
+map('n', '<leader>fnr', builtin.reloader, opts('Lua modules'))
+map('n', '<leader>fns', builtin.symbols, opts('Symbols'))
 
 -- File Pickers
 map('n', '<leader>fff', builtin.find_files, opts('Files'))
@@ -147,7 +148,8 @@ map('n', '<leader>fli', builtin.lsp_incoming_calls, opts('Incoming calls'))
 map('n', '<leader>flo', builtin.lsp_outgoing_calls, opts('Outgoing calls'))
 map('n', '<leader>fls', builtin.lsp_document_symbols, opts('Document symbols'))
 map('n', '<leader>flS', builtin.lsp_workspace_symbols, opts('Document symbols in the current workspace'))
-map('n', '<leader>flx', builtin.lsp_dynamic_workspace_symbols, opts('Document symbols in the current workspace dynamically'))
+map('n', '<leader>flx', builtin.lsp_dynamic_workspace_symbols,
+    opts('Document symbols in the current workspace dynamically'))
 map('n', '<leader>fld', builtin.diagnostics, opts('Diagnostics'))
 map('n', '<leader>flI', builtin.lsp_implementations, opts('Implementations'))
 map('n', '<leader>flD', builtin.lsp_definitions, opts('Definitions'))
@@ -159,3 +161,11 @@ map('n', '<leader>fgC', builtin.git_bcommits, opts('Buffer\'s git commits'))
 map('n', '<leader>fgb', builtin.git_branches, opts('Git branches'))
 map('n', '<leader>fgs', builtin.git_status, opts('Git status'))
 map('n', '<leader>fgS', builtin.git_stash, opts('Stash items'))
+
+-- Treesitter Picker
+map('n', '<leader>ft', builtin.treesitter, opts('Treesitter'))
+
+-- Projects.nvim extension
+telescope.load_extension('projects')
+
+map('n', '<leader>fp', '<cmd>Telescope projects<cr>', opts('Projects'))
