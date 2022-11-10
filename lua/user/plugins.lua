@@ -216,6 +216,14 @@ return packer.startup(function(use)
         config = function() require('user.plugins.alpha') end,
     }
 
+    -- nvim-dap is a Debug Adapter Protocol client implementation for Neovim.
+    use {
+        'mfussenegger/nvim-dap',
+        requires = {
+            'rcarriga/nvim-dap-ui',
+        }
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if ensure_packer() then
