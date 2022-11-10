@@ -164,6 +164,7 @@ return packer.startup(function(use)
         tag = '0.1.0',
         requires = {
             'nvim-lua/plenary.nvim',
+            'nvim-lua/popup.nvim',
             -- File browser extension.
             'nvim-telescope/telescope-file-browser.nvim',
             -- An extension for telescope.nvim that allows you to switch between projects.
@@ -205,6 +206,12 @@ return packer.startup(function(use)
     use {
         'karb94/neoscroll.nvim',
         config = function() require('user.plugins.neoscroll') end,
+    }
+
+    -- Cheatsheet for keymaps.
+    use {
+        'sudormrfbin/cheatsheet.nvim',
+        config = function() require('user.plugins.cheatsheet') end,
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
