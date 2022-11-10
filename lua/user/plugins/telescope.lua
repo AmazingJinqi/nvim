@@ -99,7 +99,6 @@ telescope.setup {
             hijack_netrw = true,
         },
         project = {
-            hidden_files = true,
             theme = "dropdown",
             sync_with_nvim_tree = true,
         }
