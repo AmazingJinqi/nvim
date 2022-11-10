@@ -98,10 +98,17 @@ telescope.setup {
             -- disables netrw and use telescope-file-browser in its place
             hijack_netrw = true,
         },
+        project = {
+            hidden_files = true,
+            theme = "dropdown",
+            sync_with_nvim_tree = true,
+        }
     },
 }
 
-require("telescope").load_extension("file_browser")
+require('telescope').load_extension('file_browser')
+require('telescope').load_extension('project')
+
 
 local builtin = require('telescope.builtin')
 local map = vim.keymap.set
@@ -172,3 +179,9 @@ map('n', '<leader>fgS', builtin.git_stash, opts('Stash items'))
 
 -- Treesitter Picker
 map('n', '<leader>ft', builtin.treesitter, opts('Treesitter'))
+
+-- File Browser extensions
+map('n', '<leader>fb', telescope.extensions.file_browser.file_browser, opts('File browser'))
+
+-- Project extensions
+map('n', '<leader>fp', function() telescope.extensions.project.project { display_type = 'full' } end, opts('Projects'))

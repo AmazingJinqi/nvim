@@ -166,6 +166,8 @@ return packer.startup(function(use)
             'nvim-lua/plenary.nvim',
             -- File browser extension.
             'nvim-telescope/telescope-file-browser.nvim',
+            -- An extension for telescope.nvim that allows you to switch between projects.
+            'nvim-telescope/telescope-project.nvim',
         },
         config = function()
             require('user.plugins.telescope')

@@ -19,8 +19,10 @@ nvim_tree.setup {
     update_focused_file = {
         enable = true,
         update_root = true,
+
         ignore_list = {},
     },
+    prefer_startup_root = true,
     view = {
         adaptive_size = true,
         mappings = {
