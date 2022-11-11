@@ -224,6 +224,12 @@ return packer.startup(function(use)
         }
     }
 
+    -- Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+    use {
+        'RRethy/vim-illuminate',
+        config = function() require('user.plugins.illuminate') end,
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if ensure_packer() then
