@@ -35,4 +35,5 @@ whichkey.register({
     ['<leader>h'] = { name = 'Gitsigns' },
     ['<leader>tg'] = { name = 'Toggle Gitsigns' },
     ['<leader>l'] = { name = 'LSP' },
+    ['<leader>d'] = { name = 'DAP' },
 })

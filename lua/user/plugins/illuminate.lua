@@ -12,7 +12,7 @@ illuminate.configure {
         'regex',
     },
     -- delay: delay in milliseconds
-    delay = 100,
+    delay = 500,
     -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
     filetypes_denylist = {
         'alpha',
@@ -31,3 +31,4 @@ end
 
 map('n', ']r', illuminate.goto_next_reference, opts('Next reference'))
 map('n', '[r', illuminate.goto_prev_reference, opts('Previous reference'))
+map('n', '<leader>ti', '<cmd>IlluminateToggle<cr>', opts('Toggle Illuminate'))

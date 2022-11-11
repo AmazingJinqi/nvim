@@ -219,9 +219,13 @@ return packer.startup(function(use)
     -- nvim-dap is a Debug Adapter Protocol client implementation for Neovim.
     use {
         'mfussenegger/nvim-dap',
-        requires = {
-            'rcarriga/nvim-dap-ui',
-        }
+        requires = { 'rcarriga/nvim-dap-ui' },
+        config = function() require('user.dap') end,
+    }
+
+    use {
+        'leoluz/nvim-dap-go',
+        requires = { 'mfussenegger/nvim-dap' },
     }
 
     -- Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.

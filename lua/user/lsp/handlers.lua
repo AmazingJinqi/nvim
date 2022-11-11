@@ -82,12 +82,14 @@ local function lsp_keymaps(bufnr)
     map('n', '<leader>ld', vim.lsp.buf.type_definition, bufopts('Go to type definition'))
     map('n', '<leader>ln', vim.lsp.buf.rename, bufopts('Rename'))
     map('n', '<leader>lc', vim.lsp.buf.code_action, bufopts('Code actions'))
+    map('n', '<leader>li', '<cmd>LspInfo<cr>', bufopts('LSP info'))
+    map('n', '<leader>lI', '<cmd>LspInstallInfo<cr>', bufopts('LSP installation info'))
 
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format { async = true }' ]]
 
     map('n', '<leader>/', '<cmd>Format<cr>', bufopts('Format'))
 
-    vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+    vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format() ]]
 end
 
 M.on_attach = function(client, bufnr)
