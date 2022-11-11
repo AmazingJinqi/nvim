@@ -219,7 +219,10 @@ return packer.startup(function(use)
     -- nvim-dap is a Debug Adapter Protocol client implementation for Neovim.
     use {
         'mfussenegger/nvim-dap',
-        requires = { 'rcarriga/nvim-dap-ui' },
+        requires = {
+            'rcarriga/nvim-dap-ui',
+            'Weissle/persistent-breakpoints.nvim',
+        },
         config = function() require('user.dap') end,
     }
 

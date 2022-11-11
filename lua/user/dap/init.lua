@@ -6,6 +6,9 @@ end
 
 require('user.dap.dapui')
 require('user.dap.keymaps')
+require('persistent-breakpoints').setup {
+    load_breakpoints_event = { "BufReadPost" }
+}
 
 local go_status_ok, go = pcall(require, 'dap-go')
 
