@@ -4,7 +4,11 @@ if not dap_status_ok then
     return
 end
 
-local dapui = require('dapui')
+local dap_ui_status_ok, dapui = pcall(require, "dapui")
+
+if not dap_ui_status_ok then
+    return
+end
 
 local map = vim.keymap.set
 
@@ -29,3 +33,6 @@ map('n', '<leader>dt', dap.terminate, opts('Terminate'))
 -- map('n', '<leader>dd', dap.clear_breakpoints, opts('Clear all breakpoints'))
 map('n', '<leader>dd', '<cmd>PBClearAllBreakpoints<cr>', opts('Clear all breakpoints'))
 map('n', '<leader>da', function() dap.list_breakpoints() vim.cmd [[ copen ]] end, opts('List all breakpoints'))
+
+map('n', '<leader>dvt', '<cmd>DapVirtualTextToggle<cr>', opts('Toggle virtual text'))
+map('n', '<leader>dvr', '<cmd>DapVirtualTextForceRefresh<cr>', opts('Refresh virtual text'))

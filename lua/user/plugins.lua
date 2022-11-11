@@ -122,11 +122,11 @@ return packer.startup(function(use)
         run = ':TSUpdate',
     }
 
-    -- When combined with a set of tmux key bindings, the plugin will allow you to navigate seamlessly between vim and tmux splits using a consistent set of hotkeys.
-    use {
-        'christoomey/vim-tmux-navigator',
-        config = function() require('user.plugins.vim-tmux-navigator') end,
-    }
+    -- Tmux integration features pane movement and resizing.
+    use({
+        "aserowy/tmux.nvim",
+        config = function() require('user.plugins.tmux') end
+    })
 
     -- A completion engine plugin for neovim written in Lua.
     use {
@@ -222,10 +222,12 @@ return packer.startup(function(use)
         requires = {
             'rcarriga/nvim-dap-ui',
             'Weissle/persistent-breakpoints.nvim',
+            'theHamsta/nvim-dap-virtual-text',
         },
         config = function() require('user.dap') end,
     }
 
+    -- dap-go
     use {
         'leoluz/nvim-dap-go',
         requires = { 'mfussenegger/nvim-dap' },

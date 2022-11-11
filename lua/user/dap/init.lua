@@ -9,6 +9,7 @@ require('user.dap.keymaps')
 require('persistent-breakpoints').setup {
     load_breakpoints_event = { "BufReadPost" }
 }
+require("nvim-dap-virtual-text").setup()
 
 local go_status_ok, go = pcall(require, 'dap-go')
 
