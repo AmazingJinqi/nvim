@@ -56,7 +56,7 @@ return packer.startup(function(use)
     -- This plugin adds indentation guides to all lines (including empty lines).
     use {
         'lukas-reineke/indent-blankline.nvim',
-        config = function() require('user.plugins.indent-blankline') end
+        config = function() require('user.plugins.indentline') end
     }
 
     -- A snazzy 💅 buffer line (with tabpage integration) for Neovim built using lua.
@@ -155,7 +155,10 @@ return packer.startup(function(use)
             'SmiteshP/nvim-navic',
             'utilyre/barbecue.nvim',
         },
-        config = function() require('user.lsp') end,
+        config = function()
+            require('user.lsp')
+            require('user.plugins.barbecue')
+        end,
     }
 
     -- Telescope: Gaze deeply into unknown regions using the power of the moon.

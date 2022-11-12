@@ -6,8 +6,7 @@ end
 
 require('lspconfig.ui.windows').default_options.border = 'single'
 
-require("user.lsp.mason")
-require("user.lsp.handlers").setup()
+require('user.lsp.mason')
+require('user.lsp.handlers').setup()
 require('user.lsp.null-ls')
 require('fidget').setup()
--- require('barbecue').setup()

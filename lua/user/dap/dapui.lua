@@ -26,14 +26,13 @@ dapui.setup {
     -- Expand lines larger than the window
     expand_lines = true,
     layouts = {
-        {
-            elements = {
-                -- Elements can be strings or table with id and size keys.
-                { id = "scopes", size = 0.25 },
-                "breakpoints",
-                "stacks",
-                "watches",
-            },
+        { elements = {
+            -- Elements can be strings or table with id and size keys.
+            { id = "scopes", size = 0.25 },
+            "breakpoints",
+            "stacks",
+            "watches",
+        },
             size = 40, -- 40 columns
             position = "left",
         },
@@ -79,7 +78,11 @@ dapui.setup {
 
 vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
 
-local dap = require('dap')
+local dap_status_ok, dap = pcall(require, 'dap')
+
+if not dap_status_ok then
+    return
+end
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
