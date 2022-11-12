@@ -102,12 +102,20 @@ M.on_attach = function(client, bufnr)
 
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
+
+    local navic_status_ok, navic = pcall(require, 'nvim-navic')
+
+    if navic_status_ok and client.server_capabilities["documentSymbolProvider"] then
+        navic.attach(client, bufnr)
+        vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+    end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
+local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+
+if not cmp_status_ok then
     return
 end
 

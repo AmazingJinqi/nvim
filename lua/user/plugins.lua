@@ -151,11 +151,11 @@ return packer.startup(function(use)
             'williamboman/mason-lspconfig.nvim',
             'jose-elias-alvarez/null-ls.nvim',
             'j-hui/fidget.nvim',
+            -- A simple statusline/winbar component that uses LSP to show your current code context.
+            'SmiteshP/nvim-navic',
+            'utilyre/barbecue.nvim',
         },
-        config = function()
-            require("user.lsp")
-            require("fidget").setup()
-        end,
+        config = function() require('user.lsp') end,
     }
 
     -- Telescope: Gaze deeply into unknown regions using the power of the moon.
@@ -170,9 +170,7 @@ return packer.startup(function(use)
             -- An extension for telescope.nvim that allows you to switch between projects.
             'nvim-telescope/telescope-project.nvim',
         },
-        config = function()
-            require('user.plugins.telescope')
-        end,
+        config = function() require('user.plugins.telescope') end,
     }
 
     -- Super fast git decorations implemented purely in lua/teal.
