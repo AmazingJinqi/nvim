@@ -186,3 +186,18 @@ map('n', '<leader>fb', telescope.extensions.file_browser.file_browser, opts('Fil
 
 -- Project extensions
 map('n', '<leader>fp', function() telescope.extensions.project.project { display_type = 'full' } end, opts('Projects'))
+
+local status_ok, whichkey = pcall(require, 'which-key')
+
+if not status_ok then
+    return
+end
+
+whichkey.register({
+    ['<leader>f'] = { name = 'Telescope' },
+    ['<leader>ff'] = { name = 'File Pickers' },
+    ['<leader>fv'] = { name = 'Vim Pickers' },
+    ['<leader>fl'] = { name = 'LSP Pickers' },
+    ['<leader>fg'] = { name = 'Git Picker' },
+    ['<leader>fn'] = { name = 'List Picker' },
+})

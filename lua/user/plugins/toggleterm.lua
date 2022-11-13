@@ -5,7 +5,6 @@ if not status_ok then
 end
 
 toggleterm.setup {
-    open_mapping = [[<leader>tt]],
     direction = 'float',
     insert_mappings = false,
     start_in_insert = true,
@@ -27,7 +26,7 @@ map('n', '<leader>ts', '<cmd>ToggleTerm direction=horizontal<cr>',
     { noremap = true, desc = 'Toggle Horizontal Terminal' })
 map('n', '<leader>tv', '<cmd>ToggleTerm direction=vertical size=30<cr>',
     { noremap = true, desc = 'Toggle Vertical Terminal' })
-map('n', '<leader>tf', '<cmd>ToggleTerm direction=float<cr>',
+map('n', '<leader>tt', '<cmd>ToggleTerm direction=float<cr>',
     { noremap = true, desc = 'Toggle Float Terminal' })
 
 function _G.set_terminal_keymaps()

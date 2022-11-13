@@ -24,16 +24,5 @@ whichkey.setup {
 }
 
 whichkey.register({
-    ['<leader>s'] = { name = 'Sneak' },
     ['<leader>t'] = { name = 'Toggle' },
-    ['<leader>f'] = { name = 'Telescope' },
-    ['<leader>ff'] = { name = 'File Pickers' },
-    ['<leader>fv'] = { name = 'Vim Pickers' },
-    ['<leader>fl'] = { name = 'LSP Pickers' },
-    ['<leader>fg'] = { name = 'Git Picker' },
-    ['<leader>fn'] = { name = 'List Picker' },
-    ['<leader>h'] = { name = 'Gitsigns' },
-    ['<leader>tg'] = { name = 'Toggle Gitsigns' },
-    ['<leader>l'] = { name = 'LSP' },
-    ['<leader>d'] = { name = 'DAP' },
 })

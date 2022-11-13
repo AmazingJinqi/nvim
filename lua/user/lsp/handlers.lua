@@ -90,6 +90,16 @@ local function lsp_keymaps(bufnr)
     map('n', '<leader>/', '<cmd>Format<cr>', bufopts('Format'))
 
     vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format() ]]
+
+    local status_ok, whichkey = pcall(require, 'which-key')
+
+    if not status_ok then
+        return
+    end
+
+    whichkey.register({
+        ['<leader>l'] = { name = 'LSP' },
+    })
 end
 
 M.on_attach = function(client, bufnr)

@@ -240,6 +240,13 @@ return packer.startup(function(use)
         config = function() require('user.plugins.illuminate') end,
     }
 
+    -- A tree like view for symbols in Neovim using the Language Server Protocol.
+    use {
+        'simrat39/symbols-outline.nvim',
+        config = function() require('user.plugins.symbolline') end,
+    }
+
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if ensure_packer() then

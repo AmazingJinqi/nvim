@@ -57,7 +57,6 @@ lualine.setup {
                     end
                     return msg
                 end,
-                icon = ' LSP:',
             },
             'searchcount', 'encoding', 'fileformat'
         },

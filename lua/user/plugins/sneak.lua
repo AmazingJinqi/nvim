@@ -27,3 +27,13 @@ map('', '<leader>sf', '<plug>Sneak_f', { noremap = true, desc = 'Go to the next 
 map('', '<leader>sF', '<plug>Sneak_F', { noremap = true, desc = 'Go to the previous {c}' })
 map('', '<leader>st', '<plug>Sneak_t', { noremap = true, desc = 'Go to the 1 char before next {c}' })
 map('', '<leader>sT', '<plug>Sneak_T', { noremap = true, desc = 'Go to the 1 char before previous {c}' })
+
+local status_ok, whichkey = pcall(require, 'which-key')
+
+if not status_ok then
+    return
+end
+
+whichkey.register({
+    ['<leader>s'] = { name = 'Sneak' },
+})

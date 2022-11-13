@@ -36,3 +36,13 @@ map('n', '<leader>da', function() dap.list_breakpoints() vim.cmd [[ copen ]] end
 
 map('n', '<leader>dvt', '<cmd>DapVirtualTextToggle<cr>', opts('Toggle virtual text'))
 map('n', '<leader>dvr', '<cmd>DapVirtualTextForceRefresh<cr>', opts('Refresh virtual text'))
+
+local status_ok, whichkey = pcall(require, 'which-key')
+
+if not status_ok then
+    return
+end
+
+whichkey.register({
+    ['<leader>d'] = { name = 'DAP' },
+})
