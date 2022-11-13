@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 nvim_tree.setup {
-    disable_netrw = false,
+    disable_netrw = true,
     hijack_netrw = true,
     ignore_ft_on_setup = {
         "startify",
@@ -25,6 +25,7 @@ nvim_tree.setup {
     prefer_startup_root = true,
     view = {
         adaptive_size = true,
+        hide_root_folder = true,
         mappings = {
             list = {
                 { key = '<C-s>', action = 'split' },
@@ -38,6 +39,16 @@ nvim_tree.setup {
     actions = {
         open_file = {
             quit_on_open = true,
+        },
+    },
+    log = {
+        enable = true,
+        truncate = true,
+        types = {
+            diagnostics = true,
+            git = true,
+            profile = true,
+            watcher = true,
         },
     },
 }
