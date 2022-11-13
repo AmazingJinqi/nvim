@@ -51,14 +51,14 @@ dapui.setup {
         -- Display controls in this element
         element = "repl",
         icons = {
-            pause = "",
-            play = "",
-            step_into = "",
-            step_over = "",
-            step_out = "",
-            step_back = "",
-            run_last = "↻",
-            terminate = "□",
+            pause = "",
+            play = "",
+            step_into = "",
+            step_over = "",
+            step_out = "",
+            step_back = "",
+            run_last = "",
+            terminate = "",
         },
         floating = {
             max_height = nil, -- These can be integers or a float between 0 and 1.
@@ -76,7 +76,11 @@ dapui.setup {
     },
 }
 
-vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpoint", { text = "", texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointRejected', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DiagnosticSignInfo', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '', texthl = 'DiagnosticSignHint', linehl = '', numhl = '' })
 
 local dap_status_ok, dap = pcall(require, 'dap')
 
@@ -86,12 +90,15 @@ end
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
+    vim.bo.modifiable = false
 end
 
--- dap.listeners.before.event_terminated["dapui_config"] = function()
---     dapui.close()
--- end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+    -- dapui.close()
+    vim.bo.modifiable = true
+end
 
 dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
+    vim.bo.modifiable = true
 end
