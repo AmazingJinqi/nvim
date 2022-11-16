@@ -1,6 +1,6 @@
-local status_ok, sneak = pcall(require, 'sneak')
+local sneak_status_ok, _ = pcall(require, 'sneak')
 
-if not status_ok then
+if not sneak_status_ok then
     return
 end
 
@@ -28,9 +28,9 @@ map('', '<leader>sF', '<plug>Sneak_F', { noremap = true, desc = 'Go to the previ
 map('', '<leader>st', '<plug>Sneak_t', { noremap = true, desc = 'Go to the 1 char before next {c}' })
 map('', '<leader>sT', '<plug>Sneak_T', { noremap = true, desc = 'Go to the 1 char before previous {c}' })
 
-local status_ok, whichkey = pcall(require, 'which-key')
+local wk_status_ok, whichkey = pcall(require, 'which-key')
 
-if not status_ok then
+if not wk_status_ok then
     return
 end
 
