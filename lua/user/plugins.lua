@@ -36,6 +36,12 @@ return packer.startup(function(use)
     -- Packer can manage itself
     use('wbthomason/packer.nvim')
 
+    -- necessary packages
+    use {
+        'nvim-lua/plenary.nvim',
+        'nvim-lua/popup.nvim',
+    }
+
     -- A highly customizable theme for vim and neovim with support for lsp, treesitter and a variety of plugins
     -- See config in themes.lua
     use('EdenEast/nightfox.nvim')
@@ -166,9 +172,7 @@ return packer.startup(function(use)
         'nvim-telescope/telescope.nvim',
         tag = '0.1.0',
         requires = {
-            'nvim-lua/plenary.nvim',
-            'nvim-lua/popup.nvim',
-            -- File browser extension.
+            -- -- File browser extension.
             'nvim-telescope/telescope-file-browser.nvim',
             -- An extension for telescope.nvim that allows you to switch between projects.
             'nvim-telescope/telescope-project.nvim',
