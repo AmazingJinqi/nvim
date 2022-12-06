@@ -5,8 +5,8 @@ if not status_ok then
 end
 
 local function line_total()
-    return ' ' .. vim.api.nvim_buf_line_count(vim.fn.winbufnr(
-        vim.g.statusline_winid))
+    return ' %l/' .. vim.api.nvim_buf_line_count(vim.fn.winbufnr(
+        vim.g.statusline_winid)) .. '%c'
 end
 
 lualine.setup {
@@ -61,17 +61,7 @@ lualine.setup {
             'searchcount', 'encoding', 'fileformat'
         },
         lualine_y = { 'filetype' },
-        lualine_z = {
-            {
-                line_total,
-                padding = { left = 1, right = 0 },
-                separator = '/',
-            },
-            {
-                '%l:%c',
-                padding = { left = 0, right = 1 },
-            }
-        }
+        lualine_z = { line_total },
     },
     inactive_sections = {
         lualine_a = {},
