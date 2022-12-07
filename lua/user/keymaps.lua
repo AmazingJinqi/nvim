@@ -26,3 +26,37 @@ map("t", "<C-w>h", "<C-\\><C-n><C-w>h")
 map("t", "<C-w>j", "<C-\\><C-n><C-w>j")
 map("t", "<C-w>k", "<C-\\><C-n><C-w>k")
 map("t", "<C-w>l", "<C-\\><C-n><C-w>l")
+
+local function diagnostic_disable()
+    vim.diagnostic.disable()
+    require('nvim-tree').setup {
+        diagnostics = {
+            enable = false,
+            show_on_dirs = false,
+        },
+    }
+    require('lualine').setup {
+        sections = {
+            lualine_b = { 'branch', 'diff' },
+        }
+    }
+end
+
+local function diagnostic_enable()
+    vim.diagnostic.enable()
+    require('nvim-tree').setup {
+        diagnostics = {
+            enable = true,
+            show_on_dirs = true,
+        },
+    }
+    require('lualine').setup {
+        sections = {
+            lualine_b = { 'branch', 'diff', 'diagnostics' },
+        }
+    }
+end
+
+-- Diagnostics
+map('n', '<leader>td', diagnostic_disable, { noremap = true, desc = 'Disable diagnostic' })
+map('n', '<leader>tD', diagnostic_enable, { noremap = true, desc = 'Enable diagnostic' })

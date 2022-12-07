@@ -6,12 +6,18 @@ end
 nvim_tree.setup {
     disable_netrw = true,
     hijack_netrw = true,
+    hijack_cursor = true,
     ignore_ft_on_setup = {
         "startify",
         "dashboard",
         "alpha",
     },
     update_cwd = true,
+    hijack_directories = {
+        enable = true,
+        auto_open = true,
+    },
+    sync_root_with_cwd = true,
     diagnostics = {
         enable = true,
         show_on_dirs = true,
@@ -22,10 +28,11 @@ nvim_tree.setup {
 
         ignore_list = {},
     },
+    remove_keymaps = { "<Tab>" },
     prefer_startup_root = true,
     view = {
         adaptive_size = true,
-        hide_root_folder = true,
+        hide_root_folder = false,
         mappings = {
             list = {
                 { key = '<C-s>', action = 'split' },
@@ -34,12 +41,10 @@ nvim_tree.setup {
         },
     },
     renderer = {
-        highlight_git = true,
+        highlight_opened_files = "name",
     },
     actions = {
-        open_file = {
-            quit_on_open = true,
-        },
+        window_picker = { enable = true },
     },
     log = {
         enable = true,
