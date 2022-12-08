@@ -43,9 +43,9 @@ nvim_tree.setup {
     renderer = {
         highlight_opened_files = "name",
     },
-    actions = {
-        window_picker = { enable = true },
-    },
+    -- actions = {
+    --     window_picker = { enable = true },
+    -- },
     log = {
         enable = true,
         truncate = true,
