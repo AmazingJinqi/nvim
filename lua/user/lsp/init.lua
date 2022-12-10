@@ -15,3 +15,5 @@ local fidget_status_ok, fidget = pcall(require, 'fidget')
 if fidget_status_ok then
     fidget.setup()
 end
+
+vim.lsp.buf.format({ timeout_ms = 2000 })

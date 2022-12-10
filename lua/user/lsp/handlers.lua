@@ -89,7 +89,7 @@ local function lsp_keymaps(bufnr)
 
     map('n', '<leader>/', '<cmd>Format<cr>', bufopts('Format'))
 
-    vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format() ]]
+    -- vim.cmd [[ autocmd BufWritePre * lua vim.lsp.buf.format() ]]
 
     local status_ok, whichkey = pcall(require, 'which-key')
 
