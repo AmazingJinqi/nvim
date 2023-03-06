@@ -7,11 +7,11 @@ nvim_tree.setup {
     disable_netrw = true,
     hijack_netrw = true,
     hijack_cursor = true,
-    ignore_ft_on_setup = {
-        "startify",
-        "dashboard",
-        "alpha",
-    },
+    -- ignore_ft_on_setup = {
+    --     "startify",
+    --     "dashboard",
+    --     "alpha",
+    -- },
     update_cwd = true,
     hijack_directories = {
         enable = true,
