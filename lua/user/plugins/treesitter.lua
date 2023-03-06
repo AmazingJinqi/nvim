@@ -6,7 +6,32 @@ end
 
 treesitter.setup {
     -- A list of parser names, or "all"
-    ensure_installed = 'all',
+    ensure_installed = {
+        'bash',
+        'c',
+        'cpp',
+        'cmake',
+        'css',
+        'cuda',
+        'dockerfile',
+        'gitignore',
+        'go',
+        'gomod',
+        'html',
+        'java',
+        'javascript',
+        'json',
+        'latex',
+        'lua',
+        'make',
+        'matlab',
+        'python',
+        'sql',
+        'vim',
+        'yaml',
+        'help',
+        'query',
+    },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
