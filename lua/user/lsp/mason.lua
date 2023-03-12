@@ -47,7 +47,7 @@ mason.setup {
 local servers = {
     'jsonls',
     'vimls',
-    'sumneko_lua',
+    'lua_ls',
     'pyright',
     'jdtls',
     'clangd',
