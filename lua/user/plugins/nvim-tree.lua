@@ -25,7 +25,6 @@ nvim_tree.setup {
     update_focused_file = {
         enable = true,
         update_root = true,
-
         ignore_list = {},
     },
     remove_keymaps = { "<Tab>" },
@@ -36,7 +35,7 @@ nvim_tree.setup {
         mappings = {
             list = {
                 { key = '<C-s>', action = 'split' },
-                { key = 'u', action = 'dir_up' },
+                { key = 'u',     action = 'dir_up' },
             }
         },
     },
@@ -59,3 +58,21 @@ nvim_tree.setup {
 }
 
 vim.keymap.set('n', '<leader>tn', '<cmd>NvimTreeToggle<cr>', { noremap = true, desc = 'Toggle NvimTree' })
+
+local function open_nvim_tree(data)
+
+  -- buffer is a directory
+  local directory = vim.fn.isdirectory(data.file) == 1
+
+  if not directory then
+    return
+  end
+
+  -- change to the directory
+  vim.cmd.cd(data.file)
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
