@@ -37,7 +37,7 @@ null_ls.setup {
         formatting.goimports,
         -- Tool for Golang to sort goimports by 3 groups: std, general and project dependencies.
         formatting.goimports_reviser,
-        -- Applies a base formatter (eg. goimports or gofmt), then shortens long lines of code.
-        formatting.golines,
+        -- -- Applies a base formatter (eg. goimports or gofmt), then shortens long lines of code.
+        -- formatting.golines,
     },
 }
