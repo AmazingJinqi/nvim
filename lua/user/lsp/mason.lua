@@ -18,8 +18,7 @@ mason.setup {
             package_pending = "➜",
             package_uninstalled = "✗"
         },
-        keymaps = {
-            -- Keymap to expand a package
+        keymaps = { -- Keymap to expand a package
             toggle_package_expand = "<CR>",
             -- Keymap to install the package under the current cursor position
             install_package = "i",
