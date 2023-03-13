@@ -25,6 +25,7 @@ treesitter.setup {
         'lua',
         'make',
         'matlab',
+        'proto',
         'python',
         'sql',
         'thrift',
