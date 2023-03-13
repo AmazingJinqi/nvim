@@ -1,9 +1,3 @@
-local sneak_status_ok, _ = pcall(require, 'sneak')
-
-if not sneak_status_ok then
-    return
-end
-
 local g = vim.g
 local map = vim.keymap.set
 
@@ -31,6 +25,7 @@ map('', '<leader>sT', '<plug>Sneak_T', { noremap = true, desc = 'Go to the 1 cha
 local wk_status_ok, whichkey = pcall(require, 'which-key')
 
 if not wk_status_ok then
+    print("error")
     return
 end
 
